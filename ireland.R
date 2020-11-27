@@ -4,6 +4,7 @@ library(osrm)
 library(leaflet)
 library(htmltools)
 library(sp)
+library(sf)
 library(tmap)
 library(readr)
 library(janitor)
@@ -12,6 +13,7 @@ library(lubridate)
 library(ggtext)
 library(htmlwidgets)
 library(smoothr)
+library(tidyverse)
 
 
 # run in terminal:
@@ -86,10 +88,10 @@ irl_dark<-leaflet() %>%
   addCircles(data=irl_geom_photo,
              color="#FF7900",
              weight=6) %>%
-  addControl(html = paste(tags$h1(HTML("West Atlantic Road Trip")),
+  addControl(html = paste(tags$h1(HTML("Wild Atlantic Way - Road Trip")),
                           tags$div(HTML("Mapping the roads with iPhone pictures and stplanr package"))),
              position = "topleft")
-
+irl_dark
 #saveWidget(irl_dark, file="irl_dark.html")
 
 
@@ -103,7 +105,7 @@ irl_light<-ggplot()+
           size=overlapping_segments$count / 20)+
   geom_sf(data=irl_geom_photo, color="#FF7900")+
   labs(
-    title="West Atlantic Road Trip",
+    title="Wild Atlantic Way - Road Trip",
     subtitle="Mapping the roads with iPhone pictures and stplanr package",
     caption="Authors pictures, osm, stplanr"
   )+
